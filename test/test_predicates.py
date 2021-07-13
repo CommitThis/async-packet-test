@@ -2,7 +2,7 @@ import pytest
 import time
 
 from scapy.all import Ether, IP, TCP, Dot1Q, get_if_hwaddr, sendp
-from async_packet_test.context import make_context
+from async_packet_test.context import make_pytest_context
 from async_packet_test.predicates import received_packet
 from async_packet_test.predicates import timed_out
 from async_packet_test.predicates import saw_src_mac
@@ -30,7 +30,7 @@ vlan_102_pkt = Ether(src=src_mac, dst=dst_mac) / Dot1Q(vlan=102) / \
 vlan_202_pkt = Ether(src=src_mac, dst=dst_mac) / Dot1Q(vlan=202) / \
 	IP(src='221.221.221.221', dst='17.17.17.17') / TCP(sport=3456, dport=43)
 
-context = make_context()
+context = make_pytest_context()
 
 
 

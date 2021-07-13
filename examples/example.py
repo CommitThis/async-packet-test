@@ -13,7 +13,8 @@ dst_mac = 'ff:ff:ff:ff:ff:ff'
 context = TestContext()
 
 tcp_pkt = Ether(src=src_mac, dst=dst_mac) / \
-	IP(src='221.221.221.221', dst='17.17.17.17') / TCP(sport=3456, dport=43)
+	IP(src='221.221.221.221', dst='17.17.17.17') / \
+	TCP(sport=3456, dport=43)
 
 future = context.expect(iface, received_packet)
 sendp(tcp_pkt, iface=iface)

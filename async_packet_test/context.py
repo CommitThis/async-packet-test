@@ -238,7 +238,7 @@ class TestContext:
 
 
 
-def make_context():
+def make_pytest_context():
     @pytest.fixture(scope='module')
     def context_fixture():
         yield TestContext()
