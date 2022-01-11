@@ -23,8 +23,8 @@ email: gdavey@committhis.co.uk
 description: >- # this means to ignore newlines until "baseurl:"
   Python library for testing the contents or other "expectations" on future
   packets.
-baseurl: "async-packet-test" # the subpath of your site, e.g. /blog
-url: "http://committhis.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: CommitThis
 
 
@@ -34,8 +34,6 @@ markdown: kramdown
 # theme: minima
 theme: just-the-docs
 # color_scheme: dark
-remote_theme: pmarsceill/just-the-docs
-
 plugins:
   - jekyll-feed
 
