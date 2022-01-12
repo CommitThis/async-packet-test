@@ -37,6 +37,7 @@ theme: just-the-docs
 plugins:
   - jekyll-feed
 
+footer_content: "Copyright &copy; 2020-2021 CommitThis. Distributed by an <a href=\"https://github.com/CommitThis/async-packet-test/blob/main/LICENSE\">GPLv2 license.</a>"
 
 
 

@@ -4,7 +4,7 @@ layout: home
 ---
 
 {:logostyle: style="margin: 0px auto; width: 50%"}
-![Logo](/logo.png)
+![Logo](logo.png)
 {: logostyle}
 
 {:center: style="text-align: center"}
