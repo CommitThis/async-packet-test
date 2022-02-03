@@ -1,7 +1,7 @@
 import pytest
 import time
 
-from scapy.all import Ether, IP, ICMP, sendp, Dot1Q
+from scapy.all import Ether, IP, ICMP, sendp, Dot1Q, ARP
 from async_packet_test.context import make_pytest_context
 from async_packet_test.predicates import Predicate
 
@@ -31,3 +31,15 @@ def test_did_not_see_vlan(context):
     result = context.expect('lo', saw_protocol(Dot1Q))
     sendp(packet, iface='lo')
     result.assert_false()
+
+
+def test_saw_ICMP_naked_assert(context):
+    result = context.expect('lo', saw_protocol(ICMP))
+    sendp(packet, iface='lo')
+    assert result
+
+
+def test_did_not_see_ARP_naked_assert(context):
+    result = context.expect('lo', saw_protocol(ARP))
+    sendp(packet, iface='lo')
+    assert not result

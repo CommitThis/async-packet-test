@@ -213,6 +213,17 @@ test.assert_false()
 test.assert_value(42)
 ```
 
+If the result value is explicitly a boolean, then an assertion can be triggered
+ordinarily:
+
+```python
+assert result
+```
+
+However, if the result value is not a boolean, `NotNakedAssertable` will be
+raised.
+
+
 For further examples, look at the [unit tests](https://github.com/CommitThis/async-packet-test/blob/main/test/test_predicates.py).
 
 

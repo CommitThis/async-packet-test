@@ -42,6 +42,7 @@ def test_received_packet_returns_true_when_packet_sent(context):
 
 ''' This may fail -- packets may be flying around the interface for any number
 	of reasons '''
+@pytest.mark.skip
 def test_received_packet_returns_false_when_packet_not_sent(context):
 	future = context.expect(iface, received_packet)
 	future.assert_false()
@@ -49,6 +50,7 @@ def test_received_packet_returns_false_when_packet_not_sent(context):
 
 ''' This may fail -- packets may be flying around the interface for any number
 	of reasons '''
+@pytest.mark.skip
 def test_timed_out_returns_true_when_no_packet_sent(context):
 	future = context.expect(iface, timed_out)
 	future.assert_true()
