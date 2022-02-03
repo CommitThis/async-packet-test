@@ -74,7 +74,7 @@ def test_did_not_see_vlan_103(context):
 The test context file includes a `pytest` fixture, yielding a `TestContext`.
 Therefore, the test context and predicates can be used to write unit tests.
 
-The unit tests in `test/test_predicates.py` should be fairly easy to grok.
+The unit tests in `test/test_async_packet_test.py` should be fairly easy to grok.
 
 
 ## Test Predicates
