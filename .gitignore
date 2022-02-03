@@ -138,3 +138,6 @@ dmypy.json
 cython_debug/
 
 Gemfile.lock
+
+# It's a library, not a deployment
+poetry.lock

@@ -28,44 +28,53 @@ If installing into a virtual environment, running the example would involve:
 ### Unit Tests
 
 The unit tests require the use of a `dummy` interface. To that end, a script
-has been fashioned which:
+has been fashioned which, using `poetry`:
 
 * Installs and sources the virtual environment;
 * Installs the packet test library;
-* Escalates to root, so that the;
-* `dummy` kernel module is loaded and an interface is created
-* Runs the tests via `.venv/bin/python -m pytest .`
-* Removes the `dummy` interface and exits
-
-> This is not idempotent. It will not unload `dummy` from the kernel.
+* Using `sudo`, inserts the `dummy` kernel module and creates an interface;
+* Using `sudo`, and preserving the poetry environment, runs the tests;
+* Using `sudo`, removes the `dummy` interface and exits.
 
 
 ## A Simple Example
 
-The following example creates a test for observing a single packet on the `eth0`
-interface. 
+The following example creates a test for observing a single packet on the `lo`
+(loopback) interface. 
 
-    from async_packet_test.context import TestContext
-    from scapy.all import Ether, ICMP, IP, get_if_hwaddr, sendp
+```python
+import pytest
 
-    context = TestContext()
+from scapy.all import Ether, Dot1Q, TCP, IP, sendp
 
-    pkt = Ether()/IP(src='10.0.0.1', dst='10.0.0.2')/ICMP()
+from async_packet_test.context import make_pytest_context
+from async_packet_test.predicates import saw_vlan_tag
 
-    test = context.expect('eth0', saw_packet_equals_sent(pkt))
+iface = 'lo'
+context = make_pytest_context()
+test_packet = Ether() / Dot1Q(vlan=102) / IP() / TCP()
 
-    # Send packet
-    sendp(pkt, iface='eth0')
+def test_saw_vlan_102(context):
+    result = context.expect(iface, saw_vlan_tag(102))
+    sendp(test_packet, iface=iface)
+    assert result
 
-    assert(test.result() == True)
-
+# You could use the `did_not_see_vlan_tag` predicate, however, this demonstrates
+# a negated assertion. It also demonstrates the usage of a timeout. Otherwise
+# the test would be sat waiting for a packet it will never see (until the
+# default timeout is reached)
+def test_did_not_see_vlan_103(context):
+    result = context.expect(iface, saw_vlan_tag(103), timeout=0.5)
+    sendp(test_packet, iface=iface)
+    assert not result
+```
 
 ## `pytest`
 
 The test context file includes a `pytest` fixture, yielding a `TestContext`.
 Therefore, the test context and predicates can be used to write unit tests.
 
-The unit tests in `test/test_predicates.py` should be fairly easy to grok.
+The unit tests in `test/test_async_packet_test.py` should be fairly easy to grok.
 
 
 ## Test Predicates
