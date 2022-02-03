@@ -1,0 +1,26 @@
+# [build-system]
+# requires = [
+#     "setuptools>=42",
+#     "wheel"
+# ]
+# build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "async-packet-test"
+version = "1.0.0"
+description = "Human readable tests for future expected packets"
+authors = ["CommitThis <gdavey@committhis.co.uk>"]
+license = "GPL-2.0-only"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+scapy = "^2.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^4.6"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

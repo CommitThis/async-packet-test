@@ -11,20 +11,21 @@ with open("README.md", "r") as fh:
 
 install_requirements = [
     'scapy',
-    'pytest'
+    'pytest',
+    'pytest-cov'
 ]
 
 
-def get_setuptools_ver():
-	ver_components = setuptools.__version__.split('.')[:3]
-	return tuple([int(x) for x in ver_components])
+# def get_setuptools_ver():
+# 	ver_components = setuptools.__version__.split('.')[:3]
+# 	return tuple([int(x) for x in ver_components])
 
 
-if get_setuptools_ver() < (40, 1, 0):
-	print('Setuptools version too old, v40.1.0 and above required. Might be able to upgrade with')
-	print('\tpip install --upgrade setuptools')
-	print('Or use provided setup.sh script.')
-	sys.exit(1)
+# if get_setuptools_ver() < (40, 1, 0):
+# 	print('Setuptools version too old, v40.1.0 and above required. Might be able to upgrade with')
+# 	print('\tpip install --upgrade setuptools')
+# 	print('Or use provided setup.sh script.')
+# 	sys.exit(1)
 
 if sys.version_info < (3, 7):
 	install_requirements.append('importlib_resources')
