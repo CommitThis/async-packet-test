@@ -1,9 +1,8 @@
 [tool.poetry]
 name = "async-packet-test"
 version = "1.0.0"
-description = "Human readable tests for future expected packets"
+description = "Human readable tests for future expected packets."
 authors = ["CommitThis <gdavey@committhis.co.uk>"]
-maintainers = ["CommitThis <gdavey@committhis.co.uk>"]
 license = "GPL-2.0-only"
 classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
