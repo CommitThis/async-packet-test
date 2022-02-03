@@ -39,8 +39,8 @@ has been fashioned which, using `poetry`:
 
 ## A Simple Example
 
-The following example creates a test for observing a single packet on the `eth0`
-interface. 
+The following example creates a test for observing a single packet on the `lo`
+(loopback) interface. 
 
 ```python
 import pytest
