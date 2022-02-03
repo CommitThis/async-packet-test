@@ -10,7 +10,18 @@ name = "async-packet-test"
 version = "1.0.0"
 description = "Human readable tests for future expected packets"
 authors = ["CommitThis <gdavey@committhis.co.uk>"]
+maintainers = ["CommitThis <gdavey@committhis.co.uk>"]
 license = "GPL-2.0-only"
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Networking",
+    "Framework :: Pytest",
+]
+readme = "README.md"
+repository = "https://github.com/CommitThis/async-packet-test"
+documentation = "https://committhis.github.io/async-packet-test/"
+homepage = "https://committhis.github.io/async-packet-test/"
 
 [tool.poetry.dependencies]
 python = "^3.6"

@@ -223,12 +223,12 @@ def test_packet_count_with_timeout(context):
 
 
 
-def test_saw_vlan_tag(context):
+def test_did_not_see_vlan_tag_is_true_when_not_sent(context):
 	result = context.expect(iface, did_not_see_vlan_tag(103), timeout=1.0)
 	sendp(vlan_102_pkt, iface=iface)
 	assert result
 
-def test_saw_vlan_tag_not(context):
+def test_did_not_see_vlan_tag_is_false_when_sent(context):
 	result = context.expect(iface, did_not_see_vlan_tag(102), timeout=1.0)
 	sendp(vlan_102_pkt, iface=iface)
 	assert not result
